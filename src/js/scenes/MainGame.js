@@ -3,6 +3,7 @@ import {Actor, Engine, Random, Timer, Vector, Label, Color, Font, FontUnit, Scen
 import { StartScreen } from "./StartScreen.js";
 import { Background } from "../actors/Background.js";
 import { Plane } from "../actors/Plane.js";
+import { Enemy } from "../actors/Enemy.js";
 
 export class MainGame extends Scene {
 
@@ -28,6 +29,9 @@ export class MainGame extends Scene {
 
         const Player = new Plane()
         this.add(Player)
+
+        const Opponent = new Enemy()
+        this.add(Opponent)
 
         this.score = 0;
         this.mylabel = new Label({

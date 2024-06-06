@@ -1,6 +1,5 @@
-import { Actor } from "excalibur";
 import { Resources, ResourceLoader } from "../resources.js";
-import { ImageSource, Sound, Resource, Loader, Vector, Input, Keys } from 'excalibur'
+import { Actor, ImageSource, Sound, Resource, Loader, Vector, Input, Keys } from 'excalibur'
 
 export class Plane extends Actor {
 
