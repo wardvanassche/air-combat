@@ -2,6 +2,7 @@ import { Resources, ResourceLoader } from "../resources.js";
 import {Actor, Engine, Random, Timer, Vector, Label, Color, Font, FontUnit, Scene } from "excalibur";
 import { StartScreen } from "./StartScreen.js";
 import { Background } from "../actors/Background.js";
+import { Plane } from "../actors/Plane.js";
 
 export class MainGame extends Scene {
 
@@ -22,8 +23,11 @@ export class MainGame extends Scene {
     }
 
     onActivate(ctx) {
-        const background = new Background();
-        this.add(background);
+        const Sky = new Background()
+        this.add(Sky)
+
+        const Player = new Plane()
+        this.add(Player)
 
         this.score = 0;
         this.mylabel = new Label({

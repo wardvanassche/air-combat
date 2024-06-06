@@ -28,10 +28,10 @@ export class StartScreen extends Scene {
     onActivate(ctx) {
 
         this.mylabel = new Label({
-            text: `Dog Fighters`,
+            text: `AIR COMBAT`,
             pos: new Vector(100, 100),
             font: new Font({
-                family: 'open sans',
+                family: 'arial',
                 size: 60,
                 unit: FontUnit.Px,
                 color:Color.Black
