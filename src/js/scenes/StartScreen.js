@@ -1,4 +1,4 @@
-import { Scene, DisplayMode } from "excalibur";
+import { Scene, DisplayMode, Vector, Label, Color, Font, FontUnit } from "excalibur";
 import * as ex from "excalibur";
 import { Resources, ResourceLoader } from '../resources.js'
 import { MainGame } from "./MainGame.js";
@@ -10,6 +10,8 @@ export class StartScreen extends Scene {
         super()
     }
 
+    engine
+
     onInitialize(engine) {
 
         console.log("Welkom op het startscherm!")
@@ -18,7 +20,23 @@ export class StartScreen extends Scene {
         this.add(startButton)
 
         startButton.on('pointerup', (event) => {
-            engine.goToScene("MainGame")
+            engine.addScene("Game", MainGame)
+            engine.goToScene("Game")
           });
+    }
+
+    onActivate(ctx) {
+
+        this.mylabel = new Label({
+            text: `Dog Fighters`,
+            pos: new Vector(100, 100),
+            font: new Font({
+                family: 'open sans',
+                size: 60,
+                unit: FontUnit.Px,
+                color:Color.Black
+            }),
+        })
+        this.add(this.mylabel)
     }
 }

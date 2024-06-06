@@ -3,12 +3,12 @@ import { Resources, ResourceLoader } from '../resources.js'
 
 export class StartButton extends Actor {
     constructor(){
-        super({width:Resources.startButton.width, height:Resources.startButton.height})
+        super({width:Resources.StartButton.width, height:Resources.StartButton.height})
     }
 
     onInitialize(engine) {
 
-        this.graphics.use(Resources.startButton.toSprite());
+        this.graphics.use(Resources.StartButton.toSprite());
         this.graphics.anchor = new Vector(0,0);
 
         const centerX = engine.drawWidth / 2 - (this.width * this.scale.x) / 8;

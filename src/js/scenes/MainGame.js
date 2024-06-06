@@ -1,16 +1,41 @@
-import { Scene, DisplayMode } from "excalibur"
-import { Resources, ResourceLoader } from '../resources.js'
-import {Background} from "../actors/Background.js";
+import { Resources, ResourceLoader } from "../resources.js";
+import {Actor, Engine, Random, Timer, Vector, Label, Color, Font, FontUnit, Scene } from "excalibur";
+import { StartScreen } from "./StartScreen.js";
+import { Background } from "../actors/Background.js";
 
 export class MainGame extends Scene {
 
     constructor() {
-        super()
+        super();
     }
 
-    onInitialize(engine) {
-        console.log("Start!");
+    game
+    engine
+    score
+    lives
+    mylabel
+
+    onInitialize(Engine) {
+       console.log("start!")
+
+       this.game = Engine
+    }
+
+    onActivate(ctx) {
         const background = new Background();
-        this.add(background)
+        this.add(background);
+
+        this.score = 0;
+        this.mylabel = new Label({
+            text: `Score: ${this.score}`,
+            pos: new Vector(50, 50),
+            font: new Font({
+                family: 'impact',
+                size: 40,
+                unit: FontUnit.Px,
+                color:Color.White
+            }),
+        })
+        this.add(this.mylabel)
     }
 }
