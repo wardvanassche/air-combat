@@ -13,7 +13,7 @@ export class Plane extends Actor {
         this.graphics.add(Plane);
         this.pos = new Vector(0, 150);
         this.vel = new Vector(0, 0);
-        this.scale = new Vector(0.5, 0.5);
+        this.scale = new Vector(0.2, 0.2);
     }
 
     onPreUpdate(engine) {

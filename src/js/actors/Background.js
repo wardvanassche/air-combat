@@ -11,5 +11,6 @@ export class Background extends Actor {
         this.graphics.anchor = new Vector(0, 0);
         this.graphics.add(backgroundImage);
         this.pos = new Vector(0, 0);
+        this.scale = new Vector(0.5, 0.5);
     }
 }

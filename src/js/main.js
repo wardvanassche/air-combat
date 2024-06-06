@@ -6,7 +6,7 @@ import { MainGame } from "./scenes/MainGame.js";
 export class Game extends Engine {
 
   constructor() {
-    super({ width: 600, height: 300, displayMode: DisplayMode.FillScreen });
+    super({ width: 960, height: 540, displayMode: DisplayMode.FitScreen });
     this.start(ResourceLoader).then(() => this.startGame());
   }
   

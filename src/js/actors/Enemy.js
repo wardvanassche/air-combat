@@ -10,9 +10,9 @@ export class Enemy extends Actor {
         const Enemy = Resources.Enemy.toSprite();
         this.graphics.anchor = new Vector(0,0);
         this.graphics.use(Enemy);
-        this.pos = new Vector(600, 300);
+        this.pos = new Vector(600, 100);
         this.vel = new Vector(-300, 0);
-        this.scale = new Vector(0.8, 0.8);
+        this.scale = new Vector(0.3, 0.3);
 
 
 

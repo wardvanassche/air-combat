@@ -36,10 +36,10 @@ export class MainGame extends Scene {
         this.score = 0;
         this.mylabel = new Label({
             text: `Score: ${this.score}`,
-            pos: new Vector(50, 50),
+            pos: new Vector(425, 25),
             font: new Font({
                 family: 'impact',
-                size: 40,
+                size: 30,
                 unit: FontUnit.Px,
                 color:Color.White
             }),
