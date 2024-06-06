@@ -2,9 +2,9 @@ import { Scene, DisplayMode } from "excalibur";
 import * as ex from "excalibur";
 import { Resources, ResourceLoader } from '../resources.js'
 import { MainGame } from "./MainGame.js";
-import { StartButton } from "../actors/startButton.js";
+import { StartButton } from "../actors/StartButton.js";
 
-export class startScherm extends Scene {
+export class StartScreen extends Scene {
 
     constructor() {
         super()
@@ -18,7 +18,6 @@ export class startScherm extends Scene {
         this.add(startButton)
 
         startButton.on('pointerup', (event) => {
-            engine.addScene("MainGame", MainGame)
             engine.goToScene("MainGame")
           });
     }
