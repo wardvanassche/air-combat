@@ -5,7 +5,7 @@ const Resources = {
     Background: new ImageSource('images/background.jpg'),
     Plane: new ImageSource('images/plane.png'),
     Enemy: new ImageSource('images/enemy.png'),
-    Hangar: new ImageSource('images/hangar.jpeg'),
+    Hangar: new ImageSource('images/hangar.jpg'),
 }
 
 const ResourceLoader = new Loader()

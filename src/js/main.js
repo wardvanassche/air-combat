@@ -1,7 +1,8 @@
-import { Actor, DisplayMode, Engine, Input, Random, Vector, } from "excalibur"
+import { Actor, DisplayMode, Engine, Input, Random, Vector, FadeInOut, Color } from "excalibur"
 import { Resources, ResourceLoader } from "./resources.js";
 import { StartScreen } from "./scenes/StartScreen.js";
 import { MainGame } from "./scenes/MainGame.js";
+import { GameOver } from "./scenes/GameOver.js";
 
 export class Game extends Engine {
 
@@ -11,8 +12,15 @@ export class Game extends Engine {
   }
   
   startGame() {
-    this.add("MainGame", new MainGame(this.engine))
-    this.addScene("StartScreen", new StartScreen(this.engine))
+
+    let transitions = {
+      in: new FadeInOut({ duration: 400, direction: 'in', color: Color.Black }),
+      out: new FadeInOut({ duration: 400, direction: 'out', color: Color.Black })
+    }
+
+    this.add("GameOver", new GameOver(this.engine))
+    this.add('MainGame', { scene: new MainGame(), transitions })
+    this.add('StartScreen', { scene: new StartScreen(), transitions })
     this.goToScene("StartScreen");
   }
 }

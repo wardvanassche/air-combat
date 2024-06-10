@@ -1,6 +1,7 @@
 import { Resources, ResourceLoader } from "../resources.js";
-import { Actor, ImageSource, Sound, Resource, Loader, Vector, Input, Keys } from 'excalibur'
+import { Actor, ImageSource, Sound, Resource, Loader, Vector, Input, Keys, Engine } from 'excalibur'
 import { Enemy } from "../actors/Enemy.js";
+import { GameOver } from "../scenes/GameOver.js";
 
 export class Plane extends Actor {
 
@@ -8,7 +9,13 @@ export class Plane extends Actor {
         super({ width: Resources.Plane.width, height: Resources.Plane.height })
     }
 
+    game
+    engine
+
     onInitialize(engine) {
+
+        this.game = engine
+
         const Plane = Resources.Plane.toSprite();
         this.graphics.anchor = new Vector(0, 0);
         this.graphics.add(Plane);
@@ -35,8 +42,9 @@ export class Plane extends Actor {
     }
 
     hitSomething(event){
+
         if (event.other instanceof Enemy) {
-            console.log('hit enemy')
+            this.scene.engine.goToScene('GameOver')
         }
     }
 }

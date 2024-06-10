@@ -14,13 +14,12 @@ export class MainGame extends Scene {
     game
     engine
     score
-    lives
-    mylabel
+    scoreLabel
 
-    onInitialize(Engine) {
+    onInitialize(engine) {
        console.log("start!")
 
-       this.game = Engine
+       this.engine = engine
     }
 
     onActivate(ctx) {
@@ -34,7 +33,8 @@ export class MainGame extends Scene {
         this.add(Opponent)
 
         this.score = 0;
-        this.mylabel = new Label({
+
+        this.scoreLabel = new Label({
             text: `Score: ${this.score}`,
             pos: new Vector(425, 25),
             font: new Font({
@@ -44,6 +44,11 @@ export class MainGame extends Scene {
                 color:Color.White
             }),
         })
-        this.add(this.mylabel)
+        this.add(this.scoreLabel)
+    }
+
+    updateScore() {
+        this.score++
+        this.scoreLabel.text = `Score: ${this.score}`
     }
 }
