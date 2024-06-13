@@ -6,6 +6,7 @@ const Resources = {
     Plane: new ImageSource('images/plane.png'),
     Enemy: new ImageSource('images/enemy.png'),
     Hangar: new ImageSource('images/hangar.jpg'),
+    Bullet: new ImageSource('images/bullet.png')
 }
 
 const ResourceLoader = new Loader()

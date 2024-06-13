@@ -1,5 +1,5 @@
 import { Resources, ResourceLoader } from "../resources.js";
-import { Actor, Engine, Random, Timer, Vector, Label, Color, Font, FontUnit, Scene } from "excalibur";
+import { Actor, Engine, Random, Timer, Vector, Label, Color, Font, FontUnit, Scene, DisplayMode } from "excalibur";
 import { StartScreen } from "./StartScreen.js";
 import { Background } from "../actors/Background.js";
 import { Plane } from "../actors/Plane.js";
@@ -23,6 +23,7 @@ export class MainGame extends Scene {
     }
 
     onActivate(ctx) {
+
         const Sky = new Background()
         this.add(Sky)
 

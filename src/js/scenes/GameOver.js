@@ -15,6 +15,8 @@ export class GameOver extends Scene {
         console.log("Game Over!");
 
         this.game = engine
+
+        this.game.toggleDebug()
     }
 
     onActivate(ctx) {
@@ -37,8 +39,8 @@ export class GameOver extends Scene {
         this.add(this.scoreLabel)
 
         this.restartLabel = new Label({
-            text: `RESTART`,
-            pos: new Vector(600, 300),
+            text: `BACK`,
+            pos: new Vector(screenWidth / 2, 350),
             font: new Font({
                 family: 'impact',
                 size: 25,

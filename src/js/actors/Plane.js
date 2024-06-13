@@ -1,7 +1,8 @@
 import { Resources, ResourceLoader } from "../resources.js";
-import { Actor, ImageSource, Sound, Resource, Loader, Vector, Input, Keys, Engine } from 'excalibur'
+import { Actor, ImageSource, Sound, Resource, Loader, Vector, Input, Keys, Engine, DisplayMode, CollisionType } from 'excalibur'
 import { Enemy } from "../actors/Enemy.js";
 import { GameOver } from "../scenes/GameOver.js";
+import { Cannon } from "./Cannon.js";
 
 export class Plane extends Actor {
 
@@ -11,15 +12,16 @@ export class Plane extends Actor {
 
     game
     engine
-
+    score
+    
     onInitialize(engine) {
 
-        this.game = engine
+        this.engine = engine
 
+        const engineHeight = engine.drawHeight;
         const Plane = Resources.Plane.toSprite();
-        this.graphics.anchor = new Vector(0, 0);
-        this.graphics.add(Plane);
-        this.pos = new Vector(0, 150);
+        this.graphics.use(Plane);
+        this.pos = new Vector(100, engineHeight / 2);
         this.vel = new Vector(0, 0);
         this.scale = new Vector(0.2, 0.2);
 
@@ -39,12 +41,27 @@ export class Plane extends Actor {
         }
 
         this.vel = new Vector(xSpeed, ySpeed);
+
+        const cannon = new Cannon();
+        if (engine.input.keyboard.wasPressed(Keys.Space)) {
+            this.addChild(cannon)
+        }
     }
 
-    hitSomething(event){
+    hitSomething(event) {
 
         if (event.other instanceof Enemy) {
             this.scene.engine.goToScene('GameOver')
+        }
+    }
+
+    onPostUpdate(engine, _delta) {
+        super.onPostUpdate(engine, _delta);
+        if (this.pos.y < 0) {
+            this.pos = new Vector(this.pos.x, 0);
+        }
+        if (this.pos.y > engine.drawHeight - this.height * this.scale.y) {
+            this.pos = new Vector(this.pos.x, engine.drawHeight - this.height * this.scale.y);
         }
     }
 }
