@@ -19,13 +19,5 @@ export class Cannon extends Actor {
         this.pos = new Vector(100, 100);
         this.vel = new Vector(5000, 0);
         this.scale = new Vector(0.6, 0.6);
-        this.on('collisionstart', (event) => this.shot(event))
-    }
-
-    shot(event) {
-        if (event.other instanceof Enemy) {
-            console.log("shot!!!")
-            this.engine.currentScene.updateScore()
-        }
     }
 }

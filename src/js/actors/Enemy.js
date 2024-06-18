@@ -1,5 +1,6 @@
 import { Actor, CollisionType, GraphicsGroup, Vector, vec } from "excalibur";
 import { Resources, ResourceLoader } from "../resources.js";
+import {Cannon} from "./Cannon.js";
 
 export class Enemy extends Actor {
     constructor() {
@@ -18,6 +19,15 @@ export class Enemy extends Actor {
         this.vel = new Vector(-300, 0);
         this.scale = new Vector(0.4, 0.4);
         this.on("exitviewport", (event) => this.exitView());
+        this.on('collisionstart', (event) => this.shot(event))
+    }
+
+    shot(event) {
+        if (event.other instanceof Cannon) {
+            console.log("shot!!!")
+            this.kill();
+            this.engine.currentScene.updateScore()
+        }
     }
 
     exitView(event) {

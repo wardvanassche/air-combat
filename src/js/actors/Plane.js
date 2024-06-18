@@ -1,6 +1,6 @@
 import { Resources, ResourceLoader } from "../resources.js";
 import { Actor, ImageSource, Sound, Resource, Loader, Vector, Input, Keys, Engine, DisplayMode, CollisionType } from 'excalibur'
-import { Enemy } from "../actors/Enemy.js";
+import { Enemy } from "./Enemy.js";
 import { GameOver } from "../scenes/GameOver.js";
 import { Cannon } from "./Cannon.js";
 
