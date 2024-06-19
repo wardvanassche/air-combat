@@ -4,6 +4,7 @@ import { StartScreen } from "./StartScreen.js";
 import { Background } from "../actors/Background.js";
 import { Plane } from "../actors/Plane.js";
 import { Enemy } from "../actors/Enemy.js";
+import {Enemy1} from "../actors/Enemy1.js";
 
 export class MainGame extends Scene {
 
@@ -32,6 +33,9 @@ export class MainGame extends Scene {
 
         const Opponent = new Enemy()
         this.add(Opponent)
+
+        const Opponent2 = new Enemy1()
+        this.add(Opponent2)
 
         this.score = 0;
 

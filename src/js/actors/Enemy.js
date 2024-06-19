@@ -1,4 +1,4 @@
-import { Actor, CollisionType, GraphicsGroup, Vector, vec } from "excalibur";
+import { Actor, CollisionType, Vector, vec } from "excalibur";
 import { Resources, ResourceLoader } from "../resources.js";
 import {Cannon} from "./Cannon.js";
 
@@ -13,11 +13,18 @@ export class Enemy extends Actor {
 
         this.engine = engine
 
-        const Enemy = Resources.Enemy.toSprite();
-        this.graphics.add(Enemy)
-        this.pos = new Vector(800, 300);
-        this.vel = new Vector(-300, 0);
+        const randomNumber = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+        console.log(randomNumber)
+
+        const act = new Actor({})
+
+        act.graphics.use(Resources.Enemy.toSprite())
+        this.addChild(act)
+
+        this.pos = new Vector(960, randomNumber)
+        this.vel = new Vector(-500, 0)
         this.scale = new Vector(0.4, 0.4);
+
         this.on("exitviewport", (event) => this.exitView());
         this.on('collisionstart', (event) => this.shot(event))
     }
