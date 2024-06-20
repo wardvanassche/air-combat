@@ -14,7 +14,6 @@ export class Enemy extends Actor {
         this.engine = engine
 
         const randomNumber = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
-        console.log(randomNumber)
 
         const act = new Actor({})
 

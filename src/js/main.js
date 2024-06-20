@@ -7,21 +7,16 @@ import { GameOver } from "./scenes/GameOver.js";
 export class Game extends Engine {
 
   constructor() {
-    super({ width: 960, height: 540 });
+    super({width: 960, height: 540});
     this.start(ResourceLoader).then(() => this.startGame());
   }
-  
+
   startGame() {
 
-    let transitions = {
-      in: new FadeInOut({ duration: 400, direction: 'in', color: Color.Black }),
-      out: new FadeInOut({ duration: 400, direction: 'out', color: Color.Black })
-    }
-
+    this.add("MainGame", new MainGame(this.engine))
     this.add("GameOver", new GameOver(this.engine))
-    this.add('MainGame', { scene: new MainGame(), transitions })
-    this.add('StartScreen', { scene: new StartScreen(), transitions })
-    this.goToScene("StartScreen");
+    this.addScene("StartScreen", new StartScreen(this.engine))
+    this.goToScene("StartScreen")
   }
 }
 

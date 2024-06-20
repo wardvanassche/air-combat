@@ -6,13 +6,8 @@ export class Enemy1 extends Enemy {
     constructor() {
         super()
     }
-
     onInitialize(engine) {
-        const act = new Actor({})
-
-        act.graphics.use(Resources.Enemy.toSprite())
-        this.addChild(act)
-
-
+        const randomNumber = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+        this.pos = new Vector(960, randomNumber)
     }
 }

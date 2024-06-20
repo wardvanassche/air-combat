@@ -29,8 +29,9 @@ constructor() {
         this.add(startButton)
 
         startButton.on('pointerup', (event) => {
-            engine.addScene("Game", MainGame)
-            engine.goToScene("Game")
+            const mainGame = new MainGame();
+            engine.addScene("Game", mainGame);
+            engine.goToScene("Game");
           });
     }
 

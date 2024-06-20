@@ -4,7 +4,8 @@ import { StartScreen } from "./StartScreen.js";
 import { Background } from "../actors/Background.js";
 import { Plane } from "../actors/Plane.js";
 import { Enemy } from "../actors/Enemy.js";
-import {Enemy1} from "../actors/Enemy1.js";
+import { Enemy1 } from "../actors/Enemy1.js";
+import { GameOver} from "./GameOver.js";
 
 export class MainGame extends Scene {
 
@@ -21,6 +22,14 @@ export class MainGame extends Scene {
        console.log("start!")
 
        this.engine = engine
+
+        this.timer = new Timer({
+            fcn: () => this.spawnEnemy(Engine),
+            interval: 1200,
+            repeats: true
+        })
+        engine.add(this.timer)
+        this.timer.start()
     }
 
     onActivate(ctx) {
@@ -55,5 +64,15 @@ export class MainGame extends Scene {
     updateScore() {
         this.score++
         this.scoreLabel.text = `Score: ${this.score}`
+    }
+
+    spawnEnemy() {
+        const Opponent = new Enemy()
+        this.add(Opponent)
+    }
+
+    checkGameOver() {
+        this.timer.stop()
+        this.engine.goToScene("GameOver")
     }
 }
