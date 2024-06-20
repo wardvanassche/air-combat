@@ -37,11 +37,12 @@ export class MainGame extends Scene {
         const Sky = new Background()
         this.add(Sky)
 
+        const Sky2 = new Background()
+        Sky2.pos = new Vector(Resources.Background.width, 0)
+        this.add(Sky2)
+
         const Player = new Plane()
         this.add(Player)
-
-        const Opponent = new Enemy()
-        this.add(Opponent)
 
         const Opponent2 = new Enemy1()
         this.add(Opponent2)
