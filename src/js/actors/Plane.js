@@ -51,7 +51,8 @@ export class Plane extends Actor {
     hitSomething(event) {
 
         if (event.other instanceof Enemy) {
-            this.scene.engine.goToScene('GameOver')
+            this.kill()
+            this.engine.currentScene.checkGameOver()
         }
     }
 
