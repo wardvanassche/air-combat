@@ -48,8 +48,27 @@ constructor() {
                 size: 75,
                 unit: FontUnit.Px,
                 color: Color.White
-            }),
+            })
         })
         this.add(this.mylabel)
+
+
+        const previous = JSON.parse(localStorage.getItem("score"))
+
+        if(previous) {
+            console.log(previous.score)
+        }
+
+        this.scoreLabel = new Label({
+            text: `Last Score: ${previous.score}`,
+            pos: new Vector(350 , 490),
+            font: new Font({
+                family: 'arial',
+                size: 40,
+                unit: FontUnit.Px,
+                color: Color.White
+                })
+        })
+        this.add(this.scoreLabel)
     }
 }

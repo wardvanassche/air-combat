@@ -4,7 +4,6 @@ import { StartScreen } from "./StartScreen.js";
 import { Background } from "../actors/Background.js";
 import { Plane } from "../actors/Plane.js";
 import { Enemy } from "../actors/Enemy.js";
-import { Enemy1 } from "../actors/Enemy1.js";
 import { GameOver} from "./GameOver.js";
 
 export class MainGame extends Scene {
@@ -19,33 +18,35 @@ export class MainGame extends Scene {
     scoreLabel
 
     onInitialize(engine) {
+
        console.log("start!")
 
-       this.engine = engine
-
-        this.timer = new Timer({
-            fcn: () => this.spawnEnemy(Engine),
-            interval: 1200,
-            repeats: true
-        })
-        engine.add(this.timer)
-        this.timer.start()
-    }
-
-    onActivate(ctx) {
+       this.game = engine
 
         const Sky = new Background()
         this.add(Sky)
 
-        const Sky2 = new Background()
-        Sky2.pos = new Vector(Resources.Background.width, 0)
-        this.add(Sky2)
+        this.timer = new Timer({
+            fcn: () => this.spawnEnemy(Engine),
+            interval: 1100,
+            repeats: true
+        })
+        engine.add(this.timer)
+        this.timer.start()
+
+        this.timer2 = new Timer({
+            fcn: () => this.spawnEnemy2(Engine),
+            interval: 2800,
+            repeats: true
+        })
+        engine.add(this.timer2)
+        this.timer2.start()
+    }
+
+    onActivate(ctx) {
 
         const Player = new Plane()
         this.add(Player)
-
-        const Opponent2 = new Enemy1()
-        this.add(Opponent2)
 
         this.score = 0;
 
@@ -68,12 +69,23 @@ export class MainGame extends Scene {
     }
 
     spawnEnemy() {
-        const Opponent = new Enemy()
-        this.add(Opponent)
+        const Enemy1 = new Enemy(Color.Red)
+        this.add(Enemy1)
+    }
+
+    spawnEnemy2() {
+        const Enemy2 = new Enemy(Color.White)
+        this.add(Enemy2)
     }
 
     checkGameOver() {
         this.timer.stop()
+
+        let data = {
+            score: this.score
+        }
+        localStorage.setItem("score", JSON.stringify(data))
+
         this.engine.goToScene("GameOver")
     }
 }

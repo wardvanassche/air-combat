@@ -12,6 +12,7 @@ export class GameOver extends Scene {
     engine
 
     onInitialize(engine) {
+        console.log("Game Over!")
 
         this.game = engine
     }
@@ -21,7 +22,6 @@ export class GameOver extends Scene {
         const screenWidth = this.game.drawWidth;
 
         const gameOver = new Label({
-
             text: 'GAME OVER',
             pos: new Vector(screenWidth / 3.5, 250),
             font: new Font({
