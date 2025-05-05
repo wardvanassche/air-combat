@@ -7,7 +7,16 @@ import { GameOver } from "./scenes/GameOver.js";
 export class Game extends Engine {
 
   constructor() {
-    super({width: 960, height: 540});
+    super({
+      width: window.innerWidth,
+      height: window.innerHeight,
+      displayMode: DisplayMode.FitScreen,
+    });
+
+    window.addEventListener("resize", () => {
+      this.screen.resize(window.innerWidth, window.innerHeight);
+    });
+
     this.start(ResourceLoader).then(() => this.startGame());
   }
 
