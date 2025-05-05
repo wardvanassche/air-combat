@@ -10,7 +10,7 @@ export class Game extends Engine {
     super({
       width: window.innerWidth,
       height: window.innerHeight,
-      displayMode: DisplayMode.FitScreen,
+      displayMode: DisplayMode.FillScreen,
     });
 
     window.addEventListener("resize", () => {
