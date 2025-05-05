@@ -8,13 +8,7 @@ export class Game extends Engine {
 
   constructor() {
     super({
-      width: window.innerWidth,
-      height: window.innerHeight,
       displayMode: DisplayMode.FillScreen,
-    });
-
-    window.addEventListener("resize", () => {
-      this.screen.resize(window.innerWidth, window.innerHeight);
     });
 
     this.start(ResourceLoader).then(() => this.startGame());
