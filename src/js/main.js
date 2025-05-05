@@ -8,7 +8,8 @@ export class Game extends Engine {
 
   constructor() {
     super({
-      displayMode: DisplayMode.FillScreen,
+      width: 1400,
+      height: 700
     });
 
     this.start(ResourceLoader).then(() => this.startGame());
