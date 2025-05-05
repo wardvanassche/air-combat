@@ -1,7 +1,14 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
     background-color: rgb(61, 61, 61);
     display: flex;
     justify-content: center;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
 }
